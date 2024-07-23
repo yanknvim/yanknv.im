@@ -46,7 +46,7 @@
 
 			<h3 class="text-xl text-bold">TCG & DCG</h3>
 			<ul>
-				<li>Magic: The Gathering</li>
+				<li>Magic:The Gathering</li>
 				<li>遊戯王 マスターデュエル</li>
 			</ul>
 		</div>
