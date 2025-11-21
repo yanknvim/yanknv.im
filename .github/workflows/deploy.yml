@@ -27,6 +27,12 @@ jobs:
 
       - name: Build CSS
         run: bun tailwindcss -i ./src/input.css -o ./src/output.css
+      
+      - name: Upload
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "."
 
       - name: Deploy
+        id: deployment
         uses: actions/deploy-pages@v4
