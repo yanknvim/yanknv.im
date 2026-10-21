@@ -1,3 +1,10 @@
+# pnpm 9 (used by Cloudflare Workers Builds) requires `packages` to be
+# present and non-empty, otherwise `pnpm install --frozen-lockfile` fails
+# with "packages field missing or empty". "." keeps this a single-package
+# workspace while still allowing pnpm settings below.
+packages:
+  - "."
+
 allowBuilds:
   esbuild: true
   workerd: true
