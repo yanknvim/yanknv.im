@@ -1,0 +1,14 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "yanknv-im",
+  "compatibility_date": "2026-10-21",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": "./dist"
+  },
+  "build": {
+    "command": "pnpm build"
+  }
+}
