@@ -1,0 +1,48 @@
+---
+---
+<li>
+  <button
+    type="button"
+    data-theme-toggle
+    aria-label="テーマを切り替える"
+    class="cursor-pointer font-mono text-xl font-bold"
+  >
+    <span class="dark:hidden">[Dark]</span>
+    <span class="hidden dark:inline">[Light]</span>
+  </button>
+</li>
+
+<script>
+  const root = document.documentElement;
+  const toggle = document.querySelector<HTMLButtonElement>("[data-theme-toggle]");
+  const media = window.matchMedia("(prefers-color-scheme: dark)");
+
+  const storedTheme = () => {
+    try {
+      return localStorage.getItem("theme");
+    } catch {
+      return null;
+    }
+  };
+
+  const applyTheme = (isDark: boolean) => {
+    root.classList.toggle("dark", isDark);
+  };
+
+  toggle?.addEventListener("click", () => {
+    const isDark = !root.classList.contains("dark");
+    applyTheme(isDark);
+
+    try {
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+    } catch {
+      // ストレージが使えない環境では現在の表示だけ切り替える
+    }
+  });
+
+  media.addEventListener("change", (event) => {
+    if (storedTheme() === null) {
+      applyTheme(event.matches);
+    }
+  });
+</script>

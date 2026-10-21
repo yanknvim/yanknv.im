@@ -1,0 +1,31 @@
+---
+interface Props {
+  /** 日本語組版に合わせて段落の冒頭を一字下げする */
+  jaIndent?: boolean;
+}
+
+const { jaIndent = false } = Astro.props;
+---
+<div
+  class:list={[
+    `prose max-w-none dark:prose-invert
+  prose-headings:font-bold prose-headings:text-gray-900 dark:prose-headings:text-gray-100
+  prose-h1:text-2xl prose-h2:mt-12 prose-h2:text-xl
+  prose-h3:mt-8 prose-h3:text-lg
+  prose-p:leading-8 prose-p:text-justify
+  prose-li:leading-8
+  prose-a:text-blue-600 dark:prose-a:text-blue-400
+  prose-strong:text-gray-900 dark:prose-strong:text-gray-100
+  prose-code:font-normal prose-code:text-gray-800 dark:prose-code:text-gray-300
+  prose-code:before:content-none prose-code:after:content-none
+  prose-blockquote:border-l-2 prose-blockquote:border-gray-300 dark:prose-blockquote:border-gray-700
+  prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-gray-600 dark:prose-blockquote:text-gray-400
+  prose-pre:bg-gray-800 dark:prose-pre:bg-gray-900
+  prose-img:my-8 prose-img:w-full
+  prose-hr:my-12 prose-hr:border-gray-200 dark:prose-hr:border-gray-800
+  [&>:first-child]:mt-0`,
+    jaIndent && "prose-ja",
+  ]}
+>
+  <slot />
+</div>

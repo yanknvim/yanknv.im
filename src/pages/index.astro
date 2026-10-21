@@ -1,0 +1,16 @@
+---
+import Default from '../layouts/Default.astro';
+
+import { Image } from 'astro:assets';
+import heroImage from "../assets/lapwing.jpg";
+---
+
+<Default title="Home">
+  <Image
+    src={heroImage}
+    alt=""
+    loading="eager"
+    fetchpriority="high"
+    class="aspect-[4/5] w-full object-cover sm:aspect-[4/3] md:aspect-[3/2]"
+  />
+</Default>

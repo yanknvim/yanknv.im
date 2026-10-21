@@ -1,0 +1,33 @@
+@import url('https://googleapis.com');
+@import "tailwindcss";
+@plugin '@tailwindcss/typography';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+html {
+    color-scheme: light;
+}
+
+html.dark {
+    color-scheme: dark;
+}
+
+@theme {
+    --font-sans: "LINE Seed JP", sans-serif;
+    --font-mono: "Space Mono", monospace;
+}
+
+/* 日本語組版に合わせ、本文段落の冒頭を一字下げする */
+.prose-ja :where(p) {
+    text-indent: 1em;
+}
+
+/* 引用とリストはブロック自体が字下げされているため、段落には追加しない */
+.prose-ja :where(blockquote p, li p) {
+    text-indent: 0;
+}
+
+/* 画像だけの段落は、画像がはみ出さないよう字下げしない */
+.prose-ja :where(p:has(> img:only-child)) {
+    text-indent: 0;
+}

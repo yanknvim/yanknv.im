@@ -1,0 +1,26 @@
+---
+import { getCollection } from "astro:content";
+
+import Default from "../../layouts/Default.astro";
+import PostItem from "../../components/PostItem.astro";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<Default title="Posts">
+  <main class="mx-auto max-w-2xl px-4 py-10">
+    <h1 class="mb-8 font-mono text-3xl font-bold">Posts</h1>
+
+    {
+      posts.length === 0 ? (
+        <p>記事はまだありません。</p>
+      ) : (
+        <ul class="divide-y divide-gray-200 dark:divide-gray-800">
+          {posts.map((post) => <PostItem post={post} />)}
+        </ul>
+      )
+    }
+  </main>
+</Default>
