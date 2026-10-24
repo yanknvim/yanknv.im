@@ -19,7 +19,7 @@
       perSystem = {pkgs, ...}: {
         devShells.default = pkgs.mkShell {
           packages = [
-            pkgs.nodejs_26
+            pkgs.nodejs_latest
             pkgs.pnpm
 
             pkgs.astro-language-server
